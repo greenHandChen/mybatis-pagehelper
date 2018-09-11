@@ -17,7 +17,7 @@ public class MybatisApplicationTests {
 	@Test
 	public void contextLoads() {
 //		System.out.println(userDao.getUserById(1));
-		System.out.println(userDao.getUserByUsername("c",new PageHelper(0,3)));
+//		System.out.println(userDao.getUserByUsername("c",new PageHelper(0,3)));
 //		User user = new User();
 //		user.setPassword("qwerC");
 //		user.setUsername("qwerC");
