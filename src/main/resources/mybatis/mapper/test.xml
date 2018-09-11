@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql -->
+<mapper namespace="com.ceh.mybatis.mybatis.mapper.UserDao">
+
+    <select id="getUserById" parameterType="java.lang.Integer" resultType="com.ceh.mybatis.mybatis.domain.User">
+        select t.* from user t where t.id = #{id};
+    </select>
+
+    <!-- 根据username模糊查询用户 -->
+    <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.ceh.mybatis.mybatis.domain.User">
+       select t.* from user t where t.username like concat('%',#{username},'%');
+    </select>
+
+    <!-- 保存用户 -->
+    <insert id="saveUser" parameterType="com.ceh.mybatis.mybatis.domain.User">
+        <!-- keyProperty对应的是类的字段
+             keyColumn对应的是表里主键字段-->
+        <selectKey keyProperty="id" keyColumn="id" order="AFTER"
+                   resultType="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user(username,password) values(#{username},#{password});
+    </insert>
+</mapper>

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: mybatis_test
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis_test?useUnicode=true&characterEncoding=utf8&useSSL=true
+    username: root
+    password: root
+
+server:
+  port: 8081
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
+#  type-handlers-package: com.ceh.mybatis.mybatis.interceptor.page.mybatis.typehandler
