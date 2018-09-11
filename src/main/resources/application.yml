@@ -15,3 +15,6 @@ mybatis:
   configuration:
     mapUnderscoreToCamelCase: true
 #  type-handlers-package: com.ceh.mybatis.mybatis.interceptor.page.mybatis.typehandler
+
+logging:
+  config: classpath:logback-spring-ceh.xml
