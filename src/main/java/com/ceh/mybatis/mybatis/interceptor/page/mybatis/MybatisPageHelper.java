@@ -21,7 +21,6 @@ import java.util.Properties;
 /**
  * Created by enHui.Chen on 2018/6/26.
  */
-@Component
 @Intercepts(@Signature(type = Executor.class, method = "query",
         args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}))
 @Slf4j

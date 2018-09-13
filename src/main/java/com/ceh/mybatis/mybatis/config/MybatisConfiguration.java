@@ -28,13 +28,17 @@ import java.util.*;
 public class MybatisConfiguration {
     @Autowired
     private MybatisProperties properties;
-    @Autowired
-    private MybatisPageHelper mybatisPageHelper;
+
+    @Bean
+    public MybatisPageHelper mybatisPageHelper(){
+        return new MybatisPageHelper();
+    }
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(@SuppressWarnings("all") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        MybatisPageHelper mybatisPageHelper = mybatisPageHelper();
         // 配置springboot对mybatis的bean扫描的类
         sqlSessionFactoryBean.setVfs(SpringBootVFS.class);
         sqlSessionFactoryBean.setDataSource(dataSource);
