@@ -9,12 +9,15 @@ spring:
 
 server:
   port: 8081
-
-mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  configuration:
-    mapUnderscoreToCamelCase: true
-#  type-handlers-package: com.ceh.mybatis.mybatis.interceptor.page.mybatis.typehandler
+cux:
+  mybatis:
+    mapper-locations: classpath:mybatis/mapper/*.xml # nameSpace必须与mapper的接口名一致
+    my-interceptor: # 集合中是对象(对象中包含map字段)的配置案例
+      - interceptor: com.ceh.mybatis.mybatis.interceptor.page.mybatis.MybatisPageHelper
+        properties:
+          myDialect: com.ceh.mybatis.mybatis.interceptor.page.mybatis.MysqlDialect # key:value
+    configuration:
+      mapUnderscoreToCamelCase: true
 
 logging:
   config: classpath:logback-spring-ceh.xml

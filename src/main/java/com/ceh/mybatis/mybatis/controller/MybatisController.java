@@ -23,7 +23,7 @@ public class MybatisController {
     private UserDao userDao;
 
     @RequestMapping(value = "/getUserByUsername", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> getUserByUsername(@RequestParam(value = "username", required = false) String username) {
-        return new ResponseEntity(userDao.getUserByUsername(username, new PageHelper()), HttpStatus.OK);
+    public ResponseEntity<List<User>> getUserByUsername(@RequestParam(value = "username", required = false) String username, PageHelper pageHelper) {
+        return new ResponseEntity(userDao.getUserByUsername(username, pageHelper), HttpStatus.OK);
     }
 }

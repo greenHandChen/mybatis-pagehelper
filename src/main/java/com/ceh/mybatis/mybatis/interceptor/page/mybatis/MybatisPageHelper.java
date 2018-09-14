@@ -114,7 +114,7 @@ public class MybatisPageHelper implements Interceptor {
 
     public String getSql(String sql, PageHelper pageHelper) {
         String pageSql = sql.trim().replaceAll(";$", "");
-        return dialect.getSqlByPage(pageSql, pageHelper.getPage() * pageHelper.getSize(), (pageHelper.getPage() + 1) * pageHelper.getSize());
+        return dialect.getSqlByPage(pageSql, pageHelper.getPage() * pageHelper.getSize(), pageHelper.getSize());
     }
 
     public static class BoundSqlSqlSource implements SqlSource {
